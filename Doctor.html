@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <img src="">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <title>Doctor Profile</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&family=Sofia&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+<div class="prof">
+<h2>Hi,Dr.Aya:</h2>
+<ul>
+    <li><a href="#admin-container">Profile</a></li>
+    <li><a href="#Access">Accessability</a></li>
+    <li><a href="#Home">Home</a></li>
+</ul>
+<div class="buttons">
+<button>Delet your account</button>
+<button class="out">Logout</button>
+</div>
+</div>
+<div class="fall">
+    <div id="admin-container">
+        <header>
+        <h2>Doctor Profile</h2>
+        <div style="display: flex; align-items: center;">
+        <p style="font-size: 13px; margin: 5px;" ><strong>Dr.Aya</strong></p>
+        <img class="logo" src="/Images/BG4.avif">
+        </div>
+        </header>
+        <div class="info">
+            <p><strong>First Name:</strong></p> 
+            <input class="class" type="text" placeholder="John">
+            <p><strong>Last Name:</strong></p> 
+            <input class="class" type="text" placeholder="Doe">
+            <p><strong>Birth Date:</strong> </p>
+            <input class="class" type="date" placeholder="1985-06-15 (Edit)">
+            <p><strong>Gender:</strong></p>
+            <input class="class" type="text" placeholder="Male">
+            <p><strong>Email:</strong></p>
+            <input type="email" placeholder="admin@example.com (Edit)">
+            <p><strong>Phone:</strong></p>
+            <input class="class" type="number" placeholder="+1234567890 (Edit)">
+            <div>
+            <button onclick="updateDoctorProfile(event)">Save Changes</button>
+            </div>
+        </div>
+    </div>
+    <div id="Access">
+    <h2>
+        Viewing Table
+    </h2>
+    
+    <div class="data-tables">
+        <h3>Patients List</h3>
+        <table id="patientsTable">
+            <tr>
+                <th>Name</th>
+                <th>Age</th>
+                <th>Phone-Number</th>
+            </tr>
+        </table>
+        </div>
+  </div> 
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>

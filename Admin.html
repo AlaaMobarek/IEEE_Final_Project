@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Profile</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&family=Sofia&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="prof">
+<h2>Hi,John:</h2>
+<ul>
+    <li><a href="#admin-container">Profile</a></li>
+    <li><a href="#Access">Accessability</a></li>
+    <li><a href="#Home">Home</a></li>
+</ul>
+<div class="buttons">
+<button>Delet your account</button>
+<button class="out">Logout</button>
+</div>
+</div>
+<div class="fall">
+    <div id="admin-container">
+        <header>
+        <h2>Admin Profile</h2>
+        <div style="display: flex; align-items: center;">
+        <p style="font-size: 13px; margin: 5px;" ><strong>John</strong></p>
+        <img class="logo" src="/Images/BG2.png">
+        </div>
+        </header>
+        <div class="info">
+            <p><strong>First Name:</strong></p> 
+            <input class="class" type="text" placeholder="John">
+            <p><strong>Last Name:</strong></p> 
+            <input class="class" type="text" placeholder="Doe">
+            <p><strong>Birth Date:</strong> </p>
+            <input class="class" type="date" placeholder="1985-06-15">
+            <p><strong>Gender:</strong></p>
+            <input class="class" type="text" placeholder="Male">
+            <p><strong>Email:</strong></p>
+            <input type="email" placeholder="admin@example.com">
+            <p><strong>Phone:</strong></p>
+            <input class="class" type="number" placeholder="+1234567890">
+            <div>
+            <button onclick="updateAdminProfile(event)">Save Changes</button>
+            </div>
+        </div>
+    </div>
+    <div id="Access">
+    <h2>
+        Accessability
+    </h2>
+    <form class="management-section">
+        <h3>Add Doctor</h3>
+        <input type="text" id="doctorName" placeholder="Name">
+        <input type="email" id="doctorEmail" placeholder="Email">
+        <input type="file" id="doctorPhoto">
+        <input type="number" id="doctorPhone" placeholder="Phone-Number">
+        <button onclick="addDoctor(event)">Add Doctor</button>
+    </form>
+    
+    <div class="data-tables">
+        <h3>Doctors List</h3>
+        <table id="doctorsTable">
+            <tr>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Photo</th>
+                <th>Phone</th>
+                <th>Retire</th>
+            </tr>
+        </table>
+        
+        <h3>Patients List</h3>
+        <table id="patientsTable">
+            <tr>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Photo</th>
+                <th>Phone</th>
+                <th>Action</th>
+            </tr>
+        </table>
+        </div>
+  </div> 
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
