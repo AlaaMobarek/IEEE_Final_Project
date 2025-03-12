@@ -4,7 +4,7 @@ document.addEventListener("DOMContentLoaded", function() {
 });
 
 function loadDoctors() {
-    fetch('https://1a96-102-44-90-152.ngrok-free.app/admin/getAllDoctors')
+    fetch('https://643e-197-58-104-183.ngrok-free.app/admin/getAllDoctors')
     .then(response => response.json())
     .then(data => {
         let table = document.getElementById("doctorsTable");
@@ -32,7 +32,7 @@ function addDoctor(event) {
     let photo = document.getElementById("doctorPhoto").value;
 
     if (name && email && phone && photo) {
-        fetch('https://1a96-102-44-90-152.ngrok-free.app/admin/addDoctor', {
+        fetch('https://643e-197-58-104-183.ngrok-free.app/admin/addDoctor', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ name, email, phone, photo })
@@ -45,10 +45,10 @@ function addDoctor(event) {
         .catch(error => console.error('Error adding doctor:', error));
     }
 }
-//https://1a96-102-44-90-152.ngrok-free.app/admin/addDoctor
+//https://643e-197-58-104-183.ngrok-free.app/admin/addDoctor
 
 function removeDoctor(doctorId, button) {
-    fetch(`https://1a96-102-44-90-152.ngrok-free.app/admin/removeDoctor/${doctorId}`, {
+    fetch(`https://643e-197-58-104-183.ngrok-free.app/admin/removeDoctor/${doctorId}`, {
         method: 'DELETE'
     })
     .then(response => response.json())
@@ -64,7 +64,7 @@ function removeRow(button) {
 }
 
 function loadPatients() {
-    fetch('https://1a96-102-44-90-152.ngrok-free.app/admin/getPatients')
+    fetch('https://643e-197-58-104-183.ngrok-free.app/admin/getPatients')
     .then(response => response.json())
     .then(data => {
         let table = document.getElementById("patientsTable");
@@ -104,7 +104,7 @@ function updateAdminProfile(event) {
     };
 
     // إرسال البيانات إلى API الخاص بتحديث بيانات الأدمن
-    fetch('https://1a96-102-44-90-152.ngrok-free.app/auth/login', {
+    fetch('https://643e-197-58-104-183.ngrok-free.app/auth/login', {
         method: 'PUT',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(updatedData)
@@ -138,7 +138,7 @@ function updateDocrotProfile(event) {
     };
 
     // إرسال البيانات إلى API الخاص بتحديث بيانات الأدمن
-    fetch('https://1a96-102-44-90-152.ngrok-free.app/doctor/update-profile', {
+    fetch('https://643e-197-58-104-183.ngrok-free.app/doctor/update-profile', {
         method: 'PUT',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(updatedData)

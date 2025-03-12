@@ -23,7 +23,7 @@ function LogIn(form){
 
     let email= form.querySelector("#txt-input").value;
     let password= form.querySelector("#pwd").value;
-    axios.post("https://1a96-102-44-90-152.ngrok-free.app/auth/login",{
+    axios.post("https://643e-197-58-104-183.ngrok-free.app/auth/login",{
         email: email,
         password: password
     },{
@@ -38,6 +38,7 @@ function LogIn(form){
             Error_msg.textContent="";
             let user= JSON.stringify(data.user);
             SetCookie("user",user,1);
+            user = JSON.parse(user);
             if(user.role == "patient")
                 window.location.href="/uprofile.html";
             else if(user.role == "doctor")
@@ -47,8 +48,7 @@ function LogIn(form){
 
     })
     .catch((error)=>{
-        Error_msg.textContent= JSON.stringify(error.message).replaceAll('"','');
-        
+        Error_msg.textContent= (error.response) ? error.response.data : JSON.stringify(error.message).replaceAll('"','');
     })
     
 }
@@ -62,7 +62,7 @@ function SignUp(form){
     let gender = form.querySelector("input[name=Gender]:checked").value;
     let age = form.querySelector("#age").value;
     let birth_date = form.querySelector("#date").value;
-    axios.post("https://1a96-102-44-90-152.ngrok-free.app/auth/signup",{
+    axios.post("https://643e-197-58-104-183.ngrok-free.app/auth/signup",{
         name: name,
         email: email,
         password: password,
@@ -86,7 +86,7 @@ function SignUp(form){
 
     })
     .catch((error)=>{
-            Error_msg.textContent=error.response.data.message;
+        Error_msg.textContent= (error.response) ? error.response.data : JSON.stringify(error.message).replaceAll('"','');
         
     })
 }
@@ -94,7 +94,7 @@ function GetUserId(){
     return getCookie("user") ? (JSON.parse(getCookie("user")))._id : null;
 }
 let get_user_data = () => {
-    axios.get("https://1a96-102-44-90-152.ngrok-free.app/admin/getPatientById",{
+    axios.get("https://643e-197-58-104-183.ngrok-free.app/admin/getPatientById",{
         headers: {
             "ngrok-skip-browser-warning": "true",
             "user-id": "67cc3639cd7a5c21d5466129",
@@ -107,19 +107,20 @@ let get_user_data = () => {
     .then((response)=>{
             let user = response.data;
             // console.log(user);
-            return user;
+            return user ? user : getCookie("user") ? JSON.parse(getCookie("user")) : null;
     })
     .catch((error)=>{
-            console.log(error.message);
+            console.log(error);
             return getCookie("user") ? JSON.parse(getCookie("user")) : null;
-    })
+        })
+        return getCookie("user") ? JSON.parse(getCookie("user")) : null;
 }
 
 function LogOut(){
     if(getCookie("user")){
         SetCookie("user","",0);
     }
-    axios.post("https://1a96-102-44-90-152.ngrok-free.app/auth/logout",
+    axios.post("https://643e-197-58-104-183.ngrok-free.app/auth/logout",
        { headers: {
             "ngrok-skip-browser-warning": "true"
         }})
@@ -127,7 +128,7 @@ function LogOut(){
         if(window.location.href != "/login.html") window.location.href = "/login.html";
     })
     .catch((error) => {
-        console.log(error.response.data);
+        console.log(error);
     })
 }
 
@@ -153,7 +154,7 @@ function updateProfile(form) {
     }
 
 
-    axios.put("https://1a96-102-44-90-152.ngrok-free.app/patient/update-profile", {
+    axios.put("https://643e-197-58-104-183.ngrok-free.app/patient/update-profile", {
         profile: profile
     }, {
         params:{
@@ -169,7 +170,7 @@ function updateProfile(form) {
         window.location.href = "/uprofile.html";
     })
     .catch((error) => {
-        errorMsg.textContent = JSON.stringify(error.response.data).replaceAll('"', '');
+        errorMsg.textContent= (error.response) ? error.response.data : JSON.stringify(error.message).replaceAll('"','');
     });
 }
 
@@ -180,7 +181,7 @@ function GetDoctors(){
                 <th>Doctor's Name</th>
                 <th>Phone Number</th>
             </tr>`;
-    axios.get("https://1a96-102-44-90-152.ngrok-free.app/patient/doctors", {
+    axios.get("https://643e-197-58-104-183.ngrok-free.app/patient/doctors", {
     params: {
         userId: "67cc85c5655469223ad62c87"
     },
@@ -198,7 +199,7 @@ function GetDoctors(){
         });
     })
     .catch((error) => {
-        console.log(error.response.data);
+        console.log(error);
     });
 }
 
