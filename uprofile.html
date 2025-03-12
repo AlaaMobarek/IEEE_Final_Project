@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile Page</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="ustyle.css"> 
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+
+</head>
+<body>
+    <div class="container">
+        <!-- Sidebar Menu -->
+        <div class="sidebar">
+            <ul>
+                <li><a href=""><span><i class="fa-solid fa-user"></i></span>Personal Info</a></li>
+                <li><a href="doctor_table.html"><span><i class="fa-solid fa-user-doctor"></i></span> Doctor's Info</a></li>
+                <li> <a href="#"><span><i class="fa-solid fa-calendar-check"></i></span>Book Now</a></li>
+                <li> <a href="#" onclick="LogOut();"><span><i class="fa-solid fa-sign-out-alt"></i></span> Log Out </a></li>
+            </ul>
+        </div>
+
+        <!-- Profile Content -->
+        <div class="profile-card">
+            <div class="profile-header">
+                <img src="https://cdn-icons-png.flaticon.com/128/149/149071.png" alt="Profile Image" class="profile-img">
+            </div>
+            <div class="profile-info">
+                <h2>Name : <span id="user_name" style="text-transform: capitalize;"></span></h2>
+                <p>Email : <span id="user_email"></span></p>
+                <p>Phone Number : <span id="user_phone"></span></p>
+                <p>Gender : <span id="user_gender" style="text-transform: capitalize;"></span></p>
+            </div>
+            <div class="profile-actions">
+                <a href="Edit_profile.html" class="edit-btn">Edit Profile</a>
+                <!--<button class="delete-btn">Delete Account</button>-->
+            </div>
+        </div>
+    </div>
+
+    <script src="./script.js" ></script>
+    <script>
+        window.onload = () => {
+                let user = get_user_data();
+                if(user){
+                    document.getElementById("user_name").textContent = user.name;
+                    document.getElementById("user_email").textContent = user.email;
+                    document.getElementById("user_phone").textContent = user.phone;
+                    document.getElementById("user_gender").textContent = user.gender;
+                }
+                else{
+                    window.location.href ="/login.html";
+                }
+        }
+    </script>
+</body>
+</html>

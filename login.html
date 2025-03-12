@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+
+</head>
+<body>
+    <div class="overlay">
+        <form onsubmit="event.preventDefault();LogIn(this)">
+           <!--   con = Container  for items in the form-->
+           <div class="con">
+           <!--     Start  header Content  -->
+           <header class="head-form">
+              <h2>Log In</h2>
+              <!--     A welcome message or an explanation of the login form -->
+              <p style="color: azure;">login here using your username and password</p>
+           </header>
+
+           <span id="error1" style="color: red;"> </span>
+           
+           <br>
+           <div class="field-set">
+            <div>
+              <!--   user email -->
+                 <span class="input-item">
+                   <i class="fa fa-user-circle"></i>
+                 </span>
+                <!--   user email Input-->
+                 <input class="form-input" id="txt-input" type="email" placeholder="email" required>
+            </div> 
+             
+                   <!--   Password -->
+            <div> 
+              <span class="input-item">
+                <i class="fa fa-key"></i>
+               </span>
+              <!--   Password Input-->
+              <input class="form-input" type="password" placeholder="Password" id="pwd"  name="password" required>
+            </div> 
+            <a class="forgot" href="Reset_Password.html">Forgot Password?</a>
+        <!--buttons -->
+
+              <button class="log-in"> Log In </button>
+           </div>
+          
+        <!--   other buttons -->
+           <div class="other">
+            <p> Don't have an account? <a href="sign_up.html"> <i class="fa fa-user-plus" aria-hidden="true"></i> Sign Up Now!</a> </p>  
+           </div>
+
+
+        </div>
+
+        <!--   End Conrainer  -->
+          </div>
+        </form>
+        </div>
+        <script src="./script.js"></script>
+</body>
+</html>
+
+

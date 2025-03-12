@@ -1,175 +1,158 @@
-*{
-    text-decoration: none;
+/* Fonts Form Google Font ::- https://fonts.google.com/  -:: */
+@import url('https://fonts.googleapis.com/css?family=Abel|Abril+Fatface|Alegreya|Arima+Madurai|Dancing+Script|Dosis|Merriweather|Oleo+Script|Overlock|PT+Serif|Pacifico|Playball|Playfair+Display|Share|Unica+One|Vibur');
+/* End Fonts */
+/* Start Global rules */
+* {
+    padding: 0;
+    margin: 0;
     box-sizing: border-box;
-    font-family: "Poppins", sans-serif;
+}
+/* End Global rules */
+
+/* Start body rules */
+body {
+    background: url(image.png) no-repeat;
+    background-size: cover;
+    min-height: 100vh;
+    font-family: 'Vibur', cursive;
+/*   the main font */
+    font-family: 'Abel', sans-serif;
+opacity: .95;
+/* background-image: linear-gradient(to top, #d9afd9 0%, #97d9e1 100%); */
 }
 
-body {
-    /* font-family: Arial, sans-serif; */
-    background: url('/Images/image.png');
-    /* background-color: #f0f8ff; */
-    color: #333333;
-    margin: 0;
-    padding: 20px;
-    display: flex;
-    justify-content: space-between;
+form {
+    width: 50%;
+    min-height: 500px;
+    height: auto;
+    border-radius: 5px;
+    margin: 2% auto;
+    box-shadow: 0 9px 50px hsla(20, 67%, 75%, 0.31);
+    padding: 2%;
+    background: rgba(56, 54, 54, 0.7); /* Darker sidebar */
 }
-.fall{
-    width: 65%;
-}
-.prof{
-    width: 30%;
-    background-color: #ffffff;
-    box-shadow: 0px 0px 10px rgba(2, 2, 84, 0.2);
-    border-radius:15px ;
-    padding: 15px;
-    height: 100%;
-}
-li{
-    margin: 8px;
-}
-li a{
-    font-size: 14px;
-    color:#333333;
-}
-a:hover{
-    color: #0056b3;
-    font-size: 100%;
-}
-.buttons{
+/* form Container */
+.con{
     display: flex;
     flex-direction: column;
+    align-items: center;
+    width: 100%;
 }
-
-header{
+.field-set{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.field-set div{
+    width: 80%;
     display: flex;
     align-items: center;
-    justify-content: space-between;
-
-}
-.logo{
-    width: 40px;
-    border: solid;
-    border-color:#007bff;
-    border-width: 2px;
-    border-radius: 50% ;
-    right: 5px;
-}
-#admin-container {
-    background: #ffffff;
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0px 0px 10px rgba(0, 0, 255, 0.2);
-    margin-bottom: 20px;
+    justify-content: center;
+    margin: 10px auto;
 }
 
-.info p {
-    margin: 5px 0;
-}
-.class{
+/* the header form form */
+header {
     width: 100%;
-}
-.management-section {
-    display: flex;
-    flex-direction: column;
-    background: #e6f2ff;
-    padding: 15px;
-    border-radius: 10px;
-    box-shadow: 0px 0px 5px rgba(0, 0, 255, 0.1);
-    margin-bottom: 20px;
-}
-
-input, button {
-    padding: 10px;
-    margin: 5px;
-    border-radius: 5px;
-    border: 1px solid #007bff;
-}
-.out{
-    background: #ffffff;
-    color: red;
-    border: solid;
-    border-color:red;
-    border-width:1px;
-    cursor: pointer;
-}
-.out:hover{
-    background-color: red;
-    color: #ffffff;
-}
-button {
-    background: #ffffff;
-    color:  #007bff;
-    border: solid;
-    border-color: #007bff;
-    border-width:1px;
-    cursor: pointer;
-}
-button:hover {
-    background: #007bff;
-    color: #ffffff;
-    font-size: 90%;
-}
-#Access{
-    border-radius: 20px;
-    padding: 15px;
-    background-color: white;
-    box-shadow: 0px 0px 10px rgba(0, 0, 255, 0.2);
-}
-.data-tables {
-    display: flex;
-    flex-direction: column;
-    margin-top: 20px;
-    background: #e6f2ff;
-    box-shadow: 0px 0px 5px rgba(0, 0, 255, 0.1);
-    border-radius: 20px;
-    padding: 15px;
-}
-table {
-    width: 100%;
-    border-collapse:collapse;
-    background: white;
-}
-
-th, td {
-    border: 1px solid #007bff;
-    padding: 10px;
+    margin: 2% auto 10% auto;
     text-align: center;
 }
+/* Login title form form */
+header h2 {
+    font-size: 250%;
+    font-family: 'Playfair Display', serif;
+    color: rgba(243,161,0,1);
+}
+/*  A welcome message or an explanation of the login form */
+header p {letter-spacing: 0.05em;}
 
-th {
-    background: #007bff;
-    font-size: 14px;
-    font-style:italic;
-    color: white;
+
+
+/* //////////////////////////////////////////// */
+/* //////////////////////////////////////////// */
+
+
+.input-item {
+    background: #fff;
+    color: #333;
+    border-radius: 5px 0px 0px 5px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     width: 50px;
 }
-th:hover{
- background-color:  #1e8afd;
+
+/* inputs form  */
+input[class="form-input"]{
+    width: 90%;
+    height: 50px;
+    padding: 15px;
+    
+    font-size: 16px;
+    font-family: 'Abel', sans-serif;
+    color: #5E6472;
+  
+    outline: none;
+    border: none;
+  
+    border-radius: 0px 5px 5px 0px;
+    
+}
+/* input[id="txt-input"] {width: 250px;} */
+/* focus  */
+
+
+/* //////////////////////////////////////////// */
+/* //////////////////////////////////////////// */
+
+/* input[type="text"] {min-width: 250px;} */
+/* buttons  */
+button {
+    display: inline-block;
+    color: #252537;
+    width: 70%;
+    height: 50px;
+    padding: 0 20px;
+    background: #fff;
+    border-radius: 5px;
+    outline: none;
+    border: none;
+    cursor: pointer;
+    text-align: center;
+    transition: all 0.2s linear;
+    margin: 7% auto;
+    letter-spacing: 0.05em;
+}
+/* Submits */
+.submits {
+    width: 100%;
+    display: inline-block;
+    margin-left: 2%;
 }
 
-button.remove {
-    font-size: 12px;
-    background: rgb(255, 255, 255);
-    border-color: red;
-    border-width:1px;
-    color: red;
-}
-button.remove:hover{
-    background-color: red;
-    color: #ffffff;
-}
-@media  (max-width:950px) {
+/*    Forgot Password button FAF3DD  */
+.forgot{
+    text-decoration: none;
+    width: 80%;
+    font-weight: bold;
+    color: #fff;
+    text-align: right;
 
-    body {
-        display: flex;
-        flex-direction: column;
-    }
-    .prof{
-       width: 100%;
-       margin-bottom: 10px;
-    }
-    .fall{
-        width: 100%;
-    }
+}
+
+.other p{
+    color: #fff;
+
+}
+.other p a{
+    color: #fff;
+    font-weight: bold;
+}
+label{
+    text-align: left;
+    width: 80%;
+    font-weight: bold;
+    color: white;
 }

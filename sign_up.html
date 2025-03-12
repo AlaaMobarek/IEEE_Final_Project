@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+
+</head>
+<body>
+    <div class="overlay">
+        <form method="post" onsubmit="event.preventDefault();SignUp(this)">
+           <!--   con = Container  for items in the form-->
+           <div class="con">
+           <!--     Start  header Content  -->
+           <header class="head-form">
+              <h2>Sign Up</h2>
+              <!--     A welcome message or an explanation of the login form -->
+              <p style="color: azure;">Welcome To Nabd-Al-Hayat</p>
+           </header>
+           <span id="error2" style="color: red;"> </span>
+           <br>
+           <div class="field-set">
+
+            <label for="txt-name">Name </label>
+            <div>
+              <!--   user name -->
+                 <span class="input-item">
+                   <i class="fa fa-user-circle"></i>
+                 </span>
+                <!--   user name Input-->
+                 <input class="form-input" id="txt-name" type="text" placeholder="name" name="Name" required>
+            </div> 
+
+            <label for="phone">Phone Number </label>
+            <div>
+              <!--   user phone -->
+                 <span class="input-item">
+                    <i class="fa fa-phone"></i>
+                 </span>
+                <!--   user phone Input-->
+                 <input class="form-input" id="phone" type="text" placeholder="phone number" name="Phone" required>
+            </div>
+
+            <label for="txt-input">Email </label>
+            <div>
+              <!--   user email -->
+                 <span class="input-item">
+                   <i class="fa fa-user-circle"></i>
+                 </span>
+                <!--   user name Input-->
+                 <input class="form-input" id="txt-email" type="email" placeholder="email" name="Email" required>
+            </div> 
+
+             
+                   <!--   Password -->
+            <label for="pwd">Password </label>
+
+            <div> 
+              <span class="input-item">
+                <i class="fa fa-key"></i>
+               </span>
+              <input class="form-input" type="password" placeholder="Password" id="pwd"  name="Password" required>
+            </div>
+            
+            <!--  Gender -->            
+            <div class="gender-container">
+                <label>Select Your Gender</label>
+                <input type="radio" id="male" name="Gender" value="male">
+                <label for="male">Male</label>
+        
+                <input type="radio" id="female" name="Gender" value="female">
+                <label for="female">Female</label>
+            </div>
+
+            <label for="age">Age</label>
+            <div> 
+                <span class="input-item">
+                  <i class=""></i>
+                 </span>
+                <input class="form-input" type="number" placeholder="age" id="age"  name="Age" required>
+              </div>
+            
+
+            <!-- Birth date   -->
+            <label for="date">Birth date</label>
+            
+            <div> 
+                <span class="input-item">
+                    <i class=""></i>
+                </span>
+              <input class="form-input" type="date" id="date"  name="Date" >
+            </div>
+
+            
+        <!--buttons -->
+            <div>
+              <button class="log-in"> Sign Up </button>
+           </div>
+          
+        <!--   other buttons -->
+           <div class="other">
+
+            <p> Already have an account? <a href="login.html"> Sign In</a> </p>  
+              
+           </div>
+        <!--   End Conrainer  -->
+          </div>
+        </form>
+        </div>
+        <script src="./script.js"></script>
+
+</body>
+</html>
+
+

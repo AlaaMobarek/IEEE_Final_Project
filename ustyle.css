@@ -1,0 +1,117 @@
+/* General Styles */
+body {
+    font-family: Arial, sans-serif;
+    background: url(image.png) no-repeat center center/cover;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+/* Main Container */
+.container {
+    display: flex;
+    width: 80%;
+    height: 80vh;
+    background: rgba(0, 0, 0, 0.5); 
+    border-radius: 15px;
+    overflow: hidden;
+}
+
+/* Sidebar Menu */
+.sidebar {
+    width: 25%;
+    background: rgba(56, 54, 54, 0.7); /* Darker sidebar */
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+}
+
+.sidebar ul {
+    list-style: none;
+    padding: 0;
+}
+
+.sidebar li a{
+    padding: 15px;
+    color: white;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    text-decoration: none;
+
+}
+
+.sidebar li i {
+    font-size: 16px;
+}
+
+.sidebar li.active, .sidebar li:hover {
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 8px;
+}
+
+/* Profile Card */
+.profile-card {
+    width: 75%;
+    background: rgba(255, 255, 255, 0.2); /* Semi-transparent background */
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: white;
+    border-radius: 15px;
+}
+
+/* Profile Image */
+.profile-header {
+    display: flex;
+    justify-content: center;
+}
+
+.profile-img {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    background: rgba(215, 213, 213, 0.7); /* Grey with 70% opacity */
+}
+
+/* Profile Information */
+.profile-info {
+    text-align: center;
+    margin-top: 15px;
+}
+
+.profile-info h2 {
+    margin-bottom: 10px;
+}
+
+/* Profile Buttons */
+.profile-actions {
+    margin-top: 20px;
+}
+
+.edit-btn, .delete-btn {
+    padding: 10px 20px;
+    border: 2px solid white;
+    background: transparent;
+    color: white;
+    cursor: pointer;
+    margin: 5px;
+    border-radius: 8px;
+    transition: 0.3s;
+    text-decoration: none;
+}
+
+.edit-btn:hover {
+    background: green;
+    border-color: green;
+}
+
+.delete-btn:hover {
+    background: red;
+    border-color: red;
+}

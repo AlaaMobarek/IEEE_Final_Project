@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Doctors List</title>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: url(image.png) no-repeat;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            width: 80%;
+            margin: 50px auto;
+            background: rgba(0, 0, 0, 0.5);
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
+            color: white;
+        }
+
+        h2 {
+            color: white;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        th, td {
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            padding: 10px;
+            text-align: left;
+            color: white;
+        }
+
+        th {
+            background-color: rgba(243,161,0,0.8);
+        }
+
+        tr:nth-child(even) {
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+
+        .back-container {
+            margin-top: 20px;
+        }
+
+        .back-container a {
+            text-decoration: none;
+            font-size: 18px;
+            color: white;
+            font-weight: bold;
+            display: inline-flex;
+            align-items: center;
+        }
+
+        .back-container i {
+            margin-right: 5px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h2>View All Doctors</h2>
+        <table id="doctors_table">
+            <tr>
+                <th>Doctor's Name</th>
+                <th>Phone Number</th>
+            </tr>
+            <tr>
+                <td>Dr. John Doe</td>
+                <td>0104556854</td>
+            </tr>
+            <tr>
+                <td>Dr. Jane Smith</td>
+                <td>(987) 654-3210</td>
+            </tr>
+            <tr>
+                <td>Dr. Emily White</td>
+                <td>(555) 123-4567</td>
+            </tr>
+        </table>
+
+        <div class="back-container">
+            <a href="uprofile.html"><i class="fa-solid fa-arrow-left"></i> Back to Profile</a>
+        </div>
+    </div>
+    <script src="./script.js"></script>
+    <script>
+        window.onload = () => {
+            GetDoctors();
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+
+</head>
+<body>
+    <div class="overlay">
+        <form method="put" onsubmit="event.preventDefault();updateProfile(this)">
+           <!--   con = Container  for items in the form-->
+           <div class="con">
+           <!--     Start  header Content  -->
+           <header class="head-form">
+              <h2>Edit Profile</h2>
+              <!--     A welcome message or an explanation of the login form -->
+              <p style="color: azure;">Welcome To Nabd-Al-Hayat</p>
+           </header>
+
+           <span id="error1" style="color: red;"> </span>
+           <br>
+           <div class="field-set">
+
+            <label for="txt-name"> Name </label>
+            <div>
+              <!--   user name -->
+                 <span class="input-item">
+                   <i class="fa fa-user-circle"></i>
+                 </span>
+                <!--   user name Input-->
+                 <input class="form-input" id="txt-name" type="text" placeholder="name" name="Name" >
+            </div> 
+
+
+
+            <label for="phone">Phone Number </label>
+            <div>
+              <!--   user phone -->
+                 <span class="input-item">
+                    <i class="fa fa-phone"></i>
+                 </span>
+                <!--   user phone Input-->
+                 <input class="form-input" id="phone" type="text" placeholder="phone number" name="Phone" >
+            </div>
+
+            <label for="txt-input">Email </label>
+            <div>
+              <!--   user email -->
+                 <span class="input-item">
+                   <i class="fa fa-user-circle"></i>
+                 </span>
+                 <input class="form-input" id="txt-email" type="email" placeholder="email" name="Email" >
+            </div> 
+
+             
+                   <!--   Password -->
+            <label for="pwd">Password </label>
+
+            <div> 
+              <span class="input-item">
+                <i class="fa fa-key"></i>
+               </span>
+              <input class="form-input" type="password" placeholder="Password (leave empty to keep as it is)" id="pwd"  name="Password" >
+            </div>
+            
+
+
+            <label for="age">Age</label>
+            <div> 
+                <span class="input-item">
+                  <i class=""></i>
+                 </span>
+                <input class="form-input" type="number" placeholder="age" id="age"  name="Age" >
+              </div>
+            
+
+            <!-- Birth date   -->
+            <label for="date">Birth date</label>
+            
+            <div> 
+                <span class="input-item">
+                    <i class=""></i>
+                </span>
+              <input class="form-input" type="date" id="date"  name="Date" >
+            </div>
+
+            
+            <div>
+              <button class="Edit"> Edit </button>
+           </div>
+          
+
+        <!--   End Conrainer  -->
+          </div>
+        </form>
+        </div>
+        <script src="./script.js"></script>
+        <script>
+            window.onload = () => {
+              if(getCookie("user")){
+                let user = JSON.parse(getCookie("user"));
+                document.querySelector("#txt-name").value = user.name;
+                document.querySelector("#phone").value = user.phone;
+                document.querySelector("#txt-email").value = user.email;
+                document.querySelector("#age").value = user.age;
+                document.querySelector("#date").value = user.birthDate;
+              }else{
+                widnow.location.href = "/login.html";
+              }
+            }
+        </script>
+</body>
+</html>
+
+
