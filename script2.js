@@ -24,7 +24,7 @@ function loadDoctors() {
 }
 
 function addDoctor(event) {
-    event.preventDefault(); // منع إعادة تحميل الصفحة عند النقر على الزر
+    event.preventDefault(); 
 
     let name = document.getElementById("doctorName").value;
     let email = document.getElementById("doctorEmail").value;
@@ -40,7 +40,7 @@ function addDoctor(event) {
         .then(response => response.json())
         .then(data => {
             alert("Doctor added successfully!");
-            loadDoctors(); // إعادة تحميل القائمة بعد الإضافة
+            loadDoctors(); 
         })
         .catch(error => console.error('Error adding doctor:', error));
     }
@@ -53,7 +53,7 @@ function removeDoctor(doctorId, button) {
     })
     .then(response => response.json())
     .then(() => {
-        button.parentElement.parentElement.remove(); // حذف الصف من الجدول
+        button.parentElement.parentElement.remove();
         alert("Doctor removed successfully!");
     })
     .catch(error => console.error('Error removing doctor:', error));
@@ -85,7 +85,6 @@ function loadPatients() {
 function updateAdminProfile(event) {
     event.preventDefault(); // منع إعادة تحميل الصفحة عند النقر على الزر
 
-    // جلب البيانات من الحقول
     let firstName = document.querySelector(".info input[placeholder='John']").value;
     let lastName = document.querySelector(".info input[placeholder='Doe']").value;
     let birthDate = document.querySelector(".info input[placeholder='1985-06-15']").value;
@@ -93,7 +92,6 @@ function updateAdminProfile(event) {
     let email = document.querySelector(".info input[placeholder='admin@example.com']").value;
     let phone = document.querySelector(".info input[placeholder='+1234567890']").value;
 
-    // تجميع البيانات في كائن JSON
     let updatedData = {
         firstName,
         lastName,
@@ -103,7 +101,6 @@ function updateAdminProfile(event) {
         phone
     };
 
-    // إرسال البيانات إلى API الخاص بتحديث بيانات الأدمن
     fetch('https://643e-197-58-104-183.ngrok-free.app/auth/login', {
         method: 'PUT',
         headers: { 'Content-Type': 'application/json' },
@@ -117,9 +114,7 @@ function updateAdminProfile(event) {
 }
 
 function updateDocrotProfile(event) {
-    event.preventDefault(); // منع إعادة تحميل الصفحة عند النقر على الزر
-
-    // جلب البيانات من الحقول
+    event.preventDefault();
     let firstName = document.querySelector(".info input[placeholder='John']").value;
     let lastName = document.querySelector(".info input[placeholder='Doe']").value;
     let birthDate = document.querySelector(".info input[placeholder='1985-06-15']").value;
@@ -127,7 +122,6 @@ function updateDocrotProfile(event) {
     let email = document.querySelector(".info input[placeholder='admin@example.com']").value;
     let phone = document.querySelector(".info input[placeholder='+1234567890']").value;
 
-    // تجميع البيانات في كائن JSON
     let updatedData = {
         firstName,
         lastName,
@@ -137,7 +131,6 @@ function updateDocrotProfile(event) {
         phone
     };
 
-    // إرسال البيانات إلى API الخاص بتحديث بيانات الأدمن
     fetch('https://643e-197-58-104-183.ngrok-free.app/doctor/update-profile', {
         method: 'PUT',
         headers: { 'Content-Type': 'application/json' },
