@@ -112,7 +112,6 @@ function updateAdminProfile(event) {
     })
     .catch(error => console.error('Error updating admin profile:', error));
 }
-
 function updateDocrotProfile(event) {
     event.preventDefault();
     let firstName = document.querySelector(".info input[placeholder='John']").value;
