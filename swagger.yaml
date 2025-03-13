@@ -1,0 +1,577 @@
+swagger: '2.0'
+info:
+  title: EMBS Backend API
+  description: API for managing users (admins, doctors, patients), feedback, and system information.
+  version: 1.0.0
+basePath: /api
+schemes:
+  - http
+  - https
+consumes:
+  - application/json
+produces:
+  - application/json
+paths:
+  /auth/signup:
+    post:
+      summary: Sign up a new user (patient or doctor)
+      description: Sign up a new user with the specified role (patient or doctor).
+      parameters:
+        - in: body
+          name: user
+          description: User details for signup
+          required: true
+          schema:
+            type: object
+            properties:
+              name:
+                type: string
+              email:
+                type: string
+              password:
+                type: string
+              birthDate:
+                type: string
+              gender:
+                type: string
+              phone:
+                type: string
+              role:
+                type: string
+                enum: ['doctor', 'patient']
+              age:
+                type: integer
+              expertise:
+                type: string
+              specialty:
+                type: string
+              disease:
+                type: array
+                items:
+                  type: string
+      responses:
+        201:
+          description: User signed up successfully
+        400:
+          description: Invalid input or missing required fields
+        500:
+          description: Internal server error
+
+  /auth/login:
+    post:
+      summary: Log in a user
+      description: Authenticate a user and return user details.
+      parameters:
+        - in: body
+          name: credentials
+          description: User credentials for login
+          required: true
+          schema:
+            type: object
+            properties:
+              email:
+                type: string
+              password:
+                type: string
+      responses:
+        200:
+          description: User logged in successfully
+        401:
+          description: Incorrect password or user not found
+        500:
+          description: Internal server error
+
+  /auth/logout:
+    post:
+      summary: Log out a user
+      description: Log out the currently authenticated user.
+      responses:
+        200:
+          description: User logged out successfully
+
+  /admin/addDoctor:
+    post:
+      summary: Add a new doctor (Admin only)
+      description: Add a new doctor to the system. Only accessible by admins.
+      parameters:
+        - in: body
+          name: doctor
+          description: Doctor details to add
+          required: true
+          schema:
+            type: object
+            properties:
+              name:
+                type: string
+              email:
+                type: string
+              phone:
+                type: string
+              expertise:
+                type: string
+              specialty:
+                type: string
+              password:
+                type: string
+              adminId:
+                type: string
+      responses:
+        201:
+          description: Doctor added successfully
+        400:
+          description: Invalid input or missing required fields
+        403:
+          description: Access denied (only admins can add doctors)
+        500:
+          description: Internal server error
+
+  /admin/retireDoctor:
+    put:
+      summary: Retire a doctor (Admin only)
+      description: Mark a doctor as retired. Only accessible by admins.
+      parameters:
+        - in: body
+          name: retireDoctor
+          description: Doctor ID to retire
+          required: true
+          schema:
+            type: object
+            properties:
+              adminId:
+                type: string
+              doctorId:
+                type: string
+      responses:
+        200:
+          description: Doctor retired successfully
+        403:
+          description: Access denied (only admins can retire doctors)
+        404:
+          description: Doctor not found
+        500:
+          description: Internal server error
+
+  /admin/removeDoctor:
+    delete:
+      summary: Remove a doctor (Admin only)
+      description: Remove a doctor from the system. Only accessible by admins.
+      parameters:
+        - in: body
+          name: removeDoctor
+          description: Doctor ID to remove
+          required: true
+          schema:
+            type: object
+            properties:
+              adminId:
+                type: string
+              doctorId:
+                type: string
+      responses:
+        200:
+          description: Doctor removed successfully
+        403:
+          description: Access denied (only admins can remove doctors)
+        404:
+          description: Doctor not found
+        500:
+          description: Internal server error
+
+  /admin/removePatient:
+    delete:
+      summary: Remove a patient (Admin only)
+      description: Remove a patient from the system. Only accessible by admins.
+      parameters:
+        - in: body
+          name: removePatient
+          description: Patient ID to remove
+          required: true
+          schema:
+            type: object
+            properties:
+              adminId:
+                type: string
+              patientId:
+                type: string
+      responses:
+        200:
+          description: Patient removed successfully
+        403:
+          description: Access denied (only admins can remove patients)
+        404:
+          description: Patient not found
+        500:
+          description: Internal server error
+
+  /admin/getPatientById:
+    get:
+      summary: Get a patient by ID (Admin only)
+      description: Retrieve details of a specific patient by ID. Only accessible by admins.
+      parameters:
+        - in: query
+          name: adminId
+          required: true
+          type: string
+        - in: query
+          name: patientId
+          required: true
+          type: string
+      responses:
+        200:
+          description: Patient details retrieved successfully
+        403:
+          description: Access denied (only admins can access patient details)
+        404:
+          description: Patient not found
+        500:
+          description: Internal server error
+
+  /admin/getDoctorById:
+    get:
+      summary: Get a doctor by ID (Admin only)
+      description: Retrieve details of a specific doctor by ID. Only accessible by admins.
+      parameters:
+        - in: query
+          name: adminId
+          required: true
+          type: string
+        - in: query
+          name: doctorId
+          required: true
+          type: string
+      responses:
+        200:
+          description: Doctor details retrieved successfully
+        403:
+          description: Access denied (only admins can access doctor details)
+        404:
+          description: Doctor not found
+        500:
+          description: Internal server error
+
+  /admin/getAllDoctors:
+    get:
+      summary: Get all doctors (Admin only)
+      description: Retrieve a list of all doctors. Only accessible by admins.
+      parameters:
+        - in: query
+          name: adminId
+          required: true
+          type: string
+      responses:
+        200:
+          description: List of doctors retrieved successfully
+        403:
+          description: Access denied (only admins can access doctor details)
+        500:
+          description: Internal server error
+
+  /admin/getAllPatients:
+    get:
+      summary: Get all patients (Admin only)
+      description: Retrieve a list of all patients. Only accessible by admins.
+      parameters:
+        - in: query
+          name: adminId
+          required: true
+          type: string
+      responses:
+        200:
+          description: List of patients retrieved successfully
+        403:
+          description: Access denied (only admins can access patient details)
+        500:
+          description: Internal server error
+
+  /doctor/update-profile:
+    put:
+      summary: Update doctor profile (Doctor only)
+      description: Update the profile of the currently logged-in doctor.
+      parameters:
+        - in: body
+          name: profile
+          description: Doctor profile details to update
+          required: true
+          schema:
+            type: object
+            properties:
+              birthDate:
+                type: string
+              email:
+                type: string
+              phone:
+                type: string
+              expertise:
+                type: string
+              specialty:
+                type: string
+      responses:
+        200:
+          description: Doctor profile updated successfully
+        400:
+          description: Invalid input or missing required fields
+        403:
+          description: Access denied (only doctors can update their profile)
+        500:
+          description: Internal server error
+
+  /doctor/patients:
+    get:
+      summary: Get all patients linked to the doctor (Doctor only)
+      description: Retrieve a list of all patients linked to the currently logged-in doctor.
+      responses:
+        200:
+          description: List of patients retrieved successfully
+        403:
+          description: Access denied (only doctors can access their patients)
+        404:
+          description: No patients found
+        500:
+          description: Internal server error
+
+  /doctor/patient/{patientId}:
+    get:
+      summary: Get a specific patient by ID (Doctor only)
+      description: Retrieve details of a specific patient by ID. Only accessible by the linked doctor.
+      parameters:
+        - in: path
+          name: patientId
+          required: true
+          type: string
+      responses:
+        200:
+          description: Patient details retrieved successfully
+        403:
+          description: Access denied (only linked doctors can access patient details)
+        404:
+          description: Patient not found
+        500:
+          description: Internal server error
+
+  /patient/update-profile:
+    put:
+      summary: Update patient profile (Patient only)
+      description: Update the profile of the currently logged-in patient.
+      parameters:
+        - in: body
+          name: profile
+          description: Patient profile details to update
+          required: true
+          schema:
+            type: object
+            properties:
+              name:
+                type: string
+              birthDate:
+                type: string
+              email:
+                type: string
+              phone:
+                type: string
+              disease:
+                type: array
+                items:
+                  type: string
+      responses:
+        200:
+          description: Patient profile updated successfully
+        400:
+          description: Invalid input or missing required fields
+        403:
+          description: Access denied (only patients can update their profile)
+        500:
+          description: Internal server error
+
+  /patient/doctors:
+    get:
+      summary: Get all available doctors (Patient only)
+      description: Retrieve a list of all available doctors based on specialty or expertise.
+      parameters:
+        - in: query
+          name: specialty
+          type: string
+        - in: query
+          name: expertise
+          type: string
+      responses:
+        200:
+          description: List of doctors retrieved successfully
+        403:
+          description: Access denied (only patients can access doctors)
+        404:
+          description: No doctors found
+        500:
+          description: Internal server error
+
+  /patient/doctor/{id}:
+    get:
+      summary: Get a specific doctor by ID (Patient only)
+      description: Retrieve details of a specific doctor by ID. Only accessible by patients.
+      parameters:
+        - in: path
+          name: id
+          required: true
+          type: string
+      responses:
+        200:
+          description: Doctor details retrieved successfully
+        403:
+          description: Access denied (only patients can access doctor details)
+        404:
+          description: Doctor not found
+        500:
+          description: Internal server error
+
+  /syst/best-doctors:
+    get:
+      summary: Get the top 3 doctors based on rating (Admin only)
+      description: Retrieve the top 3 doctors based on their rating. Only accessible by admins.
+      responses:
+        200:
+          description: Top 3 doctors retrieved successfully
+        403:
+          description: Access denied (only admins can access this information)
+        500:
+          description: Internal server error
+
+  /syst/feedback:
+    get:
+      summary: Get all feedback (Admin and Doctor only)
+      description: Retrieve all feedback with patient and doctor details. Only accessible by admins and doctors.
+      responses:
+        200:
+          description: Feedback retrieved successfully
+        403:
+          description: Access denied (only admins and doctors can access feedback)
+        500:
+          description: Internal server error
+
+  /syst/add-feedback:
+    post:
+      summary: Add feedback for a doctor (Patient only)
+      description: Add feedback for a doctor. Only accessible by patients.
+      parameters:
+        - in: body
+          name: feedback
+          description: Feedback details to add
+          required: true
+          schema:
+            type: object
+            properties:
+              patientId:
+                type: string
+              doctorId:
+                type: string
+              comment:
+                type: string
+              rating:
+                type: integer
+                minimum: 1
+                maximum: 5
+      responses:
+        201:
+          description: Feedback added successfully
+        400:
+          description: Invalid input or missing required fields
+        403:
+          description: Access denied (only patients can add feedback)
+        500:
+          description: Internal server error
+
+  /syst/get_about:
+    get:
+      summary: Get about information (Admin only)
+      description: Retrieve the about page information. Only accessible by admins.
+      responses:
+        200:
+          description: About information retrieved successfully
+        403:
+          description: Access denied (only admins can access this information)
+        404:
+          description: About information not found
+        500:
+          description: Internal server error
+
+  /syst/update_about:
+    put:
+      summary: Update about information (Admin only)
+      description: Update the about page information. Only accessible by admins.
+      parameters:
+        - in: body
+          name: about
+          description: About information to update
+          required: true
+          schema:
+            type: object
+            properties:
+              departmentName:
+                type: string
+              description:
+                type: string
+              contactEmail:
+                type: string
+              contactPhone:
+                type: string
+      responses:
+        200:
+          description: About information updated successfully
+        403:
+          description: Access denied (only admins can update this information)
+        404:
+          description: About information not found
+        500:
+          description: Internal server error
+
+  /syst/create_about:
+    post:
+      summary: Create about information (Admin only)
+      description: Create the about page information. Only accessible by admins.
+      parameters:
+        - in: body
+          name: about
+          description: About information to create
+          required: true
+          schema:
+            type: object
+            properties:
+              departmentName:
+                type: string
+              description:
+                type: string
+              contactEmail:
+                type: string
+              contactPhone:
+                type: string
+      responses:
+        201:
+          description: About information created successfully
+        400:
+          description: About information already exists
+        403:
+          description: Access denied (only admins can create this information)
+        500:
+          description: Internal server error
+
+  /syst/link-patient-to-doctor:
+    post:
+      summary: Link a patient to a doctor (Admin only)
+      description: Link a patient to a specific doctor. Only accessible by admins.
+      parameters:
+        - in: body
+          name: link
+          description: Patient and doctor details to link
+          required: true
+          schema:
+            type: object
+            properties:
+              doctorName:
+                type: string
+      responses:
+        200:
+          description: Patient successfully linked to doctor
+        403:
+          description: Access denied (only admins can perform this action)
+        404:
+          description: Doctor or patient not found
+        500:
+          description: Internal server error
